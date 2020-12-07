@@ -31,6 +31,12 @@ Install the package in a Laravel Nova project via Composer and run migrations:
 # Install nova-settings
 composer require dkvhin/nova-settings
 
+# Publish Config
+php artisan vendor:publish --provider="OptimistDigital\NovaSettings\NovaSettingsServiceProvider" --tag="config"
+
+# Publish Migrations
+php artisan vendor:publish --provider="OptimistDigital\NovaSettings\NovaSettingsServiceProvider" --tag="migrations"
+
 # Run migrations
 php artisan migrate
 ```

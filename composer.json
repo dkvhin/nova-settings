@@ -1,6 +1,6 @@
 {
-  "name": "optimistdigital/nova-settings",
-  "description": "A Laravel Nova tool for editing custom settings using native Nova fields.",
+  "name": "dkvhin/nova-settings",
+  "description": "A Laravel Nova tool for editing custom settings using native Nova fields. This is a forked from optimistdigital/nova-settings",
   "keywords": [
     "laravel",
     "nova"
@@ -8,6 +8,7 @@
   "license": "MIT",
   "require": {
     "php": ">=7.2.0",
+    "anlutro/l4-settings": "^1.0",
     "laravel/nova": "^3.0",
     "optimistdigital/nova-translations-loader": "^3.0"
   },

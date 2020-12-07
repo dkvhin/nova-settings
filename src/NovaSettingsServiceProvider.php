@@ -41,8 +41,8 @@ class NovaSettingsServiceProvider extends ServiceProvider
         $this->registerRoutes();
 
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/nova-settings.php',
-            'nova-settings'
+            __DIR__ . '/../config/settings.php',
+            'settings'
         );
     }
 

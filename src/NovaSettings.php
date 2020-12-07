@@ -2,9 +2,11 @@
 
 namespace OptimistDigital\NovaSettings;
 
+use Setting;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use OptimistDigital\NovaSettings\Models\Settings;
 
 class NovaSettings extends Tool
@@ -16,6 +18,10 @@ class NovaSettings extends Tool
     public function boot()
     {
         Nova::script('nova-settings', __DIR__ . '/../dist/js/tool.js');
+        
+        Setting::setExtraColumns(array(
+            'user_id' => Auth::user()->id
+        ));
     }
 
     public function renderNavigation()
@@ -79,30 +85,12 @@ class NovaSettings extends Tool
 
     public static function getSetting($settingKey, $default = null)
     {
-        if (isset(static::$cache[$settingKey])) return static::$cache[$settingKey];
-        static::$cache[$settingKey] = static::getSettingsModel()::find($settingKey)->value ?? $default;
-        return static::$cache[$settingKey];
+        return Setting::get($settingKey, $default);
     }
 
     public static function getSettings(array $settingKeys = null)
     {
-        if (!empty($settingKeys)) {
-            $hasMissingKeys = !empty(array_diff($settingKeys, array_keys(static::$cache)));
-
-            if (!$hasMissingKeys) return collect($settingKeys)->mapWithKeys(function ($settingKey) {
-                return [$settingKey => static::$cache[$settingKey]];
-            })->toArray();
-
-            return static::getSettingsModel()::find($settingKeys)->map(function ($setting) {
-                static::$cache[$setting->key] = $setting->value;
-                return $setting;
-            })->pluck('value', 'key')->toArray();
-        }
-
-        return static::getSettingsModel()::all()->map(function ($setting) {
-            static::$cache[$setting->key] = $setting->value;
-            return $setting;
-        })->pluck('value', 'key')->toArray();
+        return  Setting::all();
     }
 
     public static function getSettingsModel(): string

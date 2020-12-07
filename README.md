@@ -29,7 +29,7 @@ Install the package in a Laravel Nova project via Composer and run migrations:
 
 ```bash
 # Install nova-settings
-composer require optimistdigital/nova-settings
+composer require dkvhin/nova-settings
 
 # Run migrations
 php artisan migrate

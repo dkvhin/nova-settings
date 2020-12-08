@@ -1,5 +1,9 @@
 # Nova Settings
 
+NOTE! THis is a forked from https://github.com/optimistdigital/nova-settings
+
+I've modified this to be a per User settings approached instead of a global settings
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/optimistdigital/nova-settings.svg?style=flat-square)](https://packagist.org/packages/optimistdigital/nova-settings)
 [![Total Downloads](https://img.shields.io/packagist/dt/optimistdigital/nova-settings.svg?style=flat-square)](https://packagist.org/packages/optimistdigital/nova-settings)
 
